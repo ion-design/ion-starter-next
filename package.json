@@ -1,9 +1,6 @@
 {
   "name": "ion-starter",
   "version": "0.0.0",
-  "workspaces": [
-    ".opencode/mcp/image-tools"
-  ],
   "scripts": {
     "dev": "node .ion/babel/babel-processor.js && mkdir -p .ion-target/public && cp .ion/scripts/injection-script.js .ion-target/public/ion-injection.js && concurrently \"node .ion/scripts/watch.js\" \"cd .ion-target && (rm -rf .next 2>/dev/null || true) && bun install && bun next dev --webpack -p 3000\"",
     "build": "node .ion/babel/babel-processor.js && mkdir -p .ion-target/public && cp .ion/scripts/injection-script.js .ion-target/public/ion-injection.js && cd .ion-target && bun install && bun next build",
