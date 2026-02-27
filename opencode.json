@@ -15,7 +15,7 @@
   "mcp": {
     "image-tools": {
       "type": "local",
-      "command": ["npx", "tsx", ".opencode/mcp/screenshot-tool/index.ts"]
+      "command": ["bunx", "tsx", ".opencode/mcp/image-tools/index.ts"]
     }
   }
 }

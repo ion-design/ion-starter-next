@@ -147,7 +147,7 @@ server.registerTool(
       const { execSync } = await import('child_process');
       const tmpFile = `/tmp/screenshot-${Date.now()}.png`;
 
-      execSync(`npx playwright screenshot --viewport-size="${width},${height}" "${url}" "${tmpFile}"`, {
+      execSync(`bunx playwright screenshot --viewport-size="${width},${height}" "${url}" "${tmpFile}"`, {
         timeout: 30000,
       });
 
