@@ -7,6 +7,7 @@ import { register as registerFetchImage } from './tools/fetch-image.js';
 import { register as registerCaptureScreenshot } from './tools/capture-screenshot.js';
 import { register as registerGenerateImage } from './tools/generate-image.js';
 import { register as registerRemoveBackground } from './tools/remove-background.js';
+import { register as registerScreenshotDevServer } from './tools/screenshot-dev-server.js';
 
 // Load .env from project root into process.env (without adding a dotenv dependency)
 try {
@@ -37,6 +38,7 @@ registerFetchImage(server);
 registerCaptureScreenshot(server);
 registerGenerateImage(server);
 registerRemoveBackground(server);
+registerScreenshotDevServer(server);
 
 async function main() {
   const transport = new StdioServerTransport();

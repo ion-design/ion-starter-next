@@ -8,6 +8,7 @@ tools:
   edit: true
   bash: true
   skill: true
+  image-tools_screenshot_dev_server: true
 steps: 45
 ---
 
@@ -19,8 +20,13 @@ Primary objective:
 
 Working rules:
 
-- Take at least one screenshot early to verify rendering.
-- Focus on runtime/display problems only.
+- Take a screenshot of the dev server early using `screenshot_dev_server` (default port 3000, pass the target route).
+- If the dev server is not running, start it with `bun run dev` via bash and wait a few seconds before retrying the screenshot.
+- Focus on runtime/display problems only: blank pages, hydration errors, missing imports, broken layouts.
 - Ignore lint-only, style-only, and non-blocking warnings.
 - Apply minimal, targeted fixes.
-- Summarize what was fixed and what remains risky.
+- After fixing, take another screenshot to verify the page renders correctly.
+
+Reporting:
+
+- When done, clearly report: what was broken, what was fixed, whether the page renders correctly, and any remaining issues or risks.
