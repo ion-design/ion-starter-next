@@ -4,6 +4,7 @@ mode: primary
 tools:
   read: true
   list: true
+  finalize: true
 steps: 25
 ---
 
@@ -25,7 +26,7 @@ Workflow:
    - If the page renders correctly: proceed to final output.
    - If the page has issues: consider whether the problem is a design/structural issue or a runtime issue. If it seems like the design agent needs to make changes, delegate back to it with specific context about what's broken. Then run fix again. Do not retry more than once.
 
-5. **Summarize.** Report what was designed, which files were modified, the endpoint to view the changes (e.g. `http://localhost:3000/`), and any remaining issues.
+5. **Finalize.** Call the `finalize` tool with a summary of what was designed and the route to view the changes (e.g. `/` or `/pricing`). This writes `SUMMARY.json` at the project root for the triggering code to read.
 
 Rules:
 
