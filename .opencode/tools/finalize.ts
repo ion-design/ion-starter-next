@@ -1,6 +1,6 @@
 import { tool } from "@opencode-ai/plugin"
 
-export default {
+export default tool({
   description:
     'Write a SUMMARY.json file at the project root with the design results. Only available to the design-command agent.',
   args: {
@@ -11,7 +11,7 @@ export default {
     const { writeFileSync } = await import('node:fs')
     const { resolve } = await import('node:path')
 
-     const output = {
+    const output = {
       summary: String(args.summary ?? '').trim(),
       route: String(args.route ?? '').trim(),
       finishedAt: new Date().toISOString(),
@@ -20,6 +20,6 @@ export default {
     const filePath = resolve(context.worktree, 'SUMMARY.json')
     writeFileSync(filePath, JSON.stringify(output, null, 2) + '\n', 'utf-8')
 
-    return { ok: true, tool: 'finalize', path: filePath, ...output }
+    return `SUMMARY.json written to ${filePath}`
   },
-};
+})
