@@ -12,8 +12,8 @@ export default {
     const { resolve } = await import('node:path')
 
      const output = {
-      summary: args.summary.trim(),
-      route: args.route.trim(),
+      summary: String(args.summary ?? '').trim(),
+      route: String(args.route ?? '').trim(),
       finishedAt: new Date().toISOString(),
     }
 
