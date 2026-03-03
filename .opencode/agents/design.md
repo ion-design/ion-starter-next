@@ -10,6 +10,7 @@ tools:
   skill: true
   image-tools_fetch_image: true
   image-tools_view_image: true
+  image-tools_screenshot_dev_server: false
 steps: 60
 ---
 
@@ -28,6 +29,14 @@ Working rules:
 - If you are asked to edit a specific project root, operate there and avoid runtime helper directories.
 - Keep edits production-oriented and minimal for the requested outcome.
 - Explain what you changed and why in concise implementation language.
+- Air on the side of simplicity in the name of speed.
+
+DO NOT:
+
+- Try to build the project to verify your changes
+- Try to render or collect screenshots to verify
+- Start doing other work tangentially related to the request.
+- DO NOT TRY TO DO TOO MUCH - focus on being fast and returning quality designs. Your work will be verified by a followup agent.
 
 Brand assets:
 

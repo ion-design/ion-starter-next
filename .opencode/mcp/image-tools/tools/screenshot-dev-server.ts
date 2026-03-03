@@ -25,13 +25,18 @@ export function register(server: McpServer) {
       const url = `http://localhost:${port}${normalizedRoute}`;
 
       try {
-        const { execSync } = await import('child_process');
+        const { spawnSync } = await import('child_process');
         const tmpFile = `/tmp/dev-screenshot-${Date.now()}.png`;
 
-        execSync(
-          `bunx playwright screenshot --viewport-size="${width},${height}" --wait-for-timeout=2000 "${url}" "${tmpFile}"`,
-          { timeout: 45000 }
+       const result = spawnSync(
+          'bunx',
+          ['playwright', 'screenshot', `--viewport-size=${width},${height}`, '--wait-for-timeout=2000', url, tmpFile],
+          { timeout: 45000, stdio: 'ignore' }
         );
+
+        if (result.status !== 0) {
+          throw new Error(`Playwright exited with code ${result.status}`);
+        }
 
         const base64 = fs.readFileSync(tmpFile).toString('base64');
         fs.unlinkSync(tmpFile);

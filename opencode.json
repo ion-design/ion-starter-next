@@ -15,7 +15,7 @@
   "mcp": {
     "image-tools": {
       "type": "local",
-      "command": ["bunx", "tsx", ".opencode/mcp/image-tools/index.ts"]
+      "command": ["env", "bunx", "tsx", ".opencode/mcp/image-tools/index.ts"]
     }
   }
 }
