@@ -1,40 +1,25 @@
-import { writeFileSync } from 'node:fs';
-import { resolve } from 'node:path';
+import { tool } from "@opencode-ai/plugin"
 
 export default {
   description:
     'Write a SUMMARY.json file at the project root with the design results. Only available to the design-command agent.',
-  parameters: {
-    type: 'object',
-    properties: {
-      summary: {
-        type: 'string',
-        description: 'Summary of what was designed and implemented.',
-      },
-      route: {
-        type: 'string',
-        description:
-          'The route path to navigate to in order to view the new designs (e.g. "/" or "/pricing").',
-      },
-    },
-    required: ['summary', 'route'],
-    additionalProperties: false,
+  args: {
+    summary: tool.schema.string().describe('Summary of what was designed and implemented.'),
+    route: tool.schema.string().describe('The route path to navigate to in order to view the new designs (e.g. "/" or "/pricing").'),
   },
-  async execute(args: { summary: string; route: string }) {
-    const output = {
+  async execute(args, context) {
+    const { writeFileSync } = await import('node:fs')
+    const { resolve } = await import('node:path')
+
+     const output = {
       summary: args.summary.trim(),
       route: args.route.trim(),
       finishedAt: new Date().toISOString(),
-    };
+    }
 
-    const filePath = resolve(process.cwd(), 'SUMMARY.json');
-    writeFileSync(filePath, JSON.stringify(output, null, 2) + '\n', 'utf-8');
+    const filePath = resolve(context.worktree, 'SUMMARY.json')
+    writeFileSync(filePath, JSON.stringify(output, null, 2) + '\n', 'utf-8')
 
-    return {
-      ok: true,
-      tool: 'finalize',
-      path: filePath,
-      ...output,
-    };
+    return { ok: true, tool: 'finalize', path: filePath, ...output }
   },
 };
