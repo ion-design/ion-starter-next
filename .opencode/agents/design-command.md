@@ -20,6 +20,7 @@ Workflow:
 1. **Understand the request.** Read the customer prompt. Identify the target route (default: `/`). If assets or brand context are referenced, note them for the design agent.
 
 2. **Delegate to design agent.** Pass the full customer request to the `design` sub-agent. Include any relevant context about existing brand assets or target route. Wait for its report. If it's easy you should just pass the whole message context you get.
+When you have image references, most often you should pass those image references to the design agent so that the design agent can see them. The design agent also has image fetch tools to see these images, so keep that in mind - pass the URLs to images whenever you think it would help.
 
 3. **Delegate to fix agent.** Once design completes, pass a fix prompt to the `fix` sub-agent: "Validate and fix the route `{target_route}` on the dev server (port 3000). Take a screenshot, fix any runtime/display issues, and confirm the page renders correctly." Use the target route from the design agent's report. You can pass a summary of the design change from the last step if that's easy.
 
