@@ -29,13 +29,16 @@ export function register(server: McpServer) {
         const tmpFile = `/tmp/dev-screenshot-${Date.now()}.png`;
 
        const result = spawnSync(
-          'bunx',
-          ['playwright', 'screenshot', `--viewport-size=${width},${height}`, '--wait-for-timeout=2000', url, tmpFile],
+          'bash',
+          [
+            '-c',
+            `agent-browser --native open "${url}" && agent-browser --native set viewport ${width} ${height} && agent-browser --native wait --load networkidle && agent-browser --native screenshot "${tmpFile}" && agent-browser --native close`,
+          ],
           { timeout: 45000, stdio: 'ignore' }
         );
 
         if (result.status !== 0) {
-          throw new Error(`Playwright exited with code ${result.status}`);
+          throw new Error(`agent-browser exited with code ${result.status}`);
         }
 
         const base64 = fs.readFileSync(tmpFile).toString('base64');

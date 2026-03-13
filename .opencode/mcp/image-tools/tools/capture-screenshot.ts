@@ -25,7 +25,7 @@ export function register(server: McpServer) {
         const tmpFile = `/tmp/screenshot-${Date.now()}.png`;
 
         execSync(
-          `bunx playwright screenshot --viewport-size="${width},${height}" "${url}" "${tmpFile}"`,
+          `agent-browser --native open "${url}" && agent-browser --native set viewport ${width} ${height} && agent-browser --native wait --load networkidle && agent-browser --native screenshot "${tmpFile}" && agent-browser --native close`,
           { timeout: 30000 }
         );
 

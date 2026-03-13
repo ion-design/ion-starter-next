@@ -16,6 +16,8 @@ export function register(server: McpServer) {
       },
     },
     async ({ url }) => {
+      const SUPPORTED_TYPES = new Set(['image/jpeg', 'image/png', 'image/gif', 'image/webp']);
+
       try {
         const response = await fetch(url);
         if (!response.ok) {
@@ -32,8 +34,21 @@ export function register(server: McpServer) {
 
         const contentType = response.headers.get('content-type') || 'image/png';
         const mimeType = contentType.split(';')[0]!.trim();
-        const buffer = await response.arrayBuffer();
-        const base64 = Buffer.from(buffer).toString('base64');
+        const buffer = Buffer.from(await response.arrayBuffer());
+
+        if (!SUPPORTED_TYPES.has(mimeType)) {
+          // Unsupported format (SVG, ICO, TIFF, etc.) — return as text description only
+          return {
+            content: [
+              {
+                type: 'text' as const,
+                text: `Fetched image from ${url} but format is unsupported for visual analysis (${mimeType}, ${Math.round(buffer.byteLength / 1024)}KB). The image exists and is ${buffer.byteLength > 0 ? 'non-empty' : 'empty'}.`,
+              },
+            ],
+          };
+        }
+
+        const base64 = buffer.toString('base64');
 
         return {
           content: [
