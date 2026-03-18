@@ -61,7 +61,8 @@ Brand assets:
 
 - To see what brand images already exist, read `company-docs/image-assets.md`. This file lists available assets with their S3 URLs and descriptions.
 - To visually inspect an existing asset, use `fetch_image` with its URL.
-- If new brand assets are needed (logos, hero images, icons, marketing visuals), delegate to the `brand-asset` sub-agent with a clear description of what to generate, including intended usage context and desired dimensions.
+- **If existing assets don't fit what you need** — wrong dimensions, wrong mood, missing entirely — **delegate to the `brand-asset` sub-agent** to generate new ones. Don't settle for placeholder images or skip visuals. Give the sub-agent a clear description of what to generate, including intended usage context, desired dimensions, and any style notes. It will return S3 URLs you can use directly in your code.
+- Always check existing assets first. Only generate when nothing existing works.
 
 Reporting:
 
