@@ -9,6 +9,14 @@ tools:
   bash: true
   skill: true
   image-tools_screenshot_dev_server: true
+  exa_*: false
+  finalize-brand: false
+  finalize-customer-research: false
+  finalize-website-research: false
+  finalize-onboarding: false
+  upload-asset: false
+  append-asset: false
+  reject-asset: false
 steps: 45
 ---
 

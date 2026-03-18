@@ -11,6 +11,14 @@ tools:
   image-tools_fetch_image: true
   image-tools_view_image: true
   image-tools_screenshot_dev_server: false
+  exa_*: false
+  finalize-brand: false
+  finalize-customer-research: false
+  finalize-website-research: false
+  finalize-onboarding: false
+  upload-asset: false
+  append-asset: false
+  reject-asset: false
 steps: 60
 ---
 

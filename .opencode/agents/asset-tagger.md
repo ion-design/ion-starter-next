@@ -7,6 +7,12 @@ tools:
   upload-asset: true
   append-asset: true
   reject-asset: true
+  exa_*: false
+  finalize: false
+  finalize-brand: false
+  finalize-customer-research: false
+  finalize-website-research: false
+  finalize-onboarding: false
 steps: 10
 ---
 

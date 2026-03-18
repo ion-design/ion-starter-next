@@ -5,6 +5,12 @@ tools:
   read: true
   skill: true
   image-tools_*: true
+  exa_*: false
+  finalize: false
+  finalize-brand: false
+  finalize-customer-research: false
+  finalize-website-research: false
+  finalize-onboarding: false
 steps: 20
 ---
 

@@ -16,6 +16,11 @@
     "image-tools": {
       "type": "local",
       "command": ["env", "bunx", "tsx", ".opencode/mcp/image-tools/index.ts"]
+    },
+    "exa": {
+      "type": "remote",
+      "url": "https://mcp.exa.ai/mcp?exaApiKey=${EXA_API_KEY}&tools=web_search_advanced_exa",
+      "enabled": true
     }
   }
 }
