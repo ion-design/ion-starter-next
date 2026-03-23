@@ -11,6 +11,7 @@ tools:
   finalize-customer-research: false
   finalize-website-research: false
   finalize-onboarding: false
+  create-designs: false
 steps: 20
 ---
 

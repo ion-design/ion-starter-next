@@ -8,6 +8,7 @@ tools:
   finalize-website-research: true
   exa_*: true
   image-tools_*: false
+  create-designs: false
 steps: 35
 ---
 
