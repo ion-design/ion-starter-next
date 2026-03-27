@@ -10,7 +10,7 @@ tools:
   skill: true
   image-tools_fetch_image: true
   image-tools_view_image: true
-  image-tools_screenshot_dev_server: true
+  image-tools_screenshot_dev_server: false
   finalize: true
   exa_*: false
   finalize-brand: false
@@ -30,7 +30,7 @@ Primary objective:
 
 - Implement high-quality marketing page UI changes directly in code.
 - If the main route `/` is the placeholder page, replace that with the requested design.
-- Focus on implementing the design. After implementing, take a screenshot to verify your work renders correctly. Fix any obvious rendering issues before reporting back.
+- Focus on implementing the design. After implementing, take a screenshot to verify your work renders correctly using agent-browser (see Screenshot section below). Fix any obvious rendering issues before reporting back.
 
 Working rules:
 
@@ -54,6 +54,18 @@ DO NOT:
 - Run linting commands
 - Check console errors
 - DO NOT over-engineer or add unnecessary complexity. Focus on the requested design and verify it renders.
+
+## Screenshots
+
+Use agent-browser to take screenshots of the dev server for visual verification. Screenshots go to `/tmp/` and are automatically cleaned up.
+
+```bash
+agent-browser open "http://localhost:3000/" && agent-browser wait --load networkidle && agent-browser screenshot /tmp/design-verify.png && agent-browser close
+```
+
+Then use the Read tool to view the screenshot image at `/tmp/design-verify.png`.
+
+For a specific route: replace `/` with the target route (e.g. `/pricing`).
 
 Brand assets:
 

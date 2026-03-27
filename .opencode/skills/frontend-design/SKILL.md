@@ -89,8 +89,11 @@ Focus on high-impact moments: one well-orchestrated page load with staggered rev
 **DO**: Use motion to convey state changes—entrances, exits, feedback
 **DO**: Use exponential easing (ease-out-quart/quint/expo) for natural deceleration
 **DO**: For height animations, use grid-template-rows transitions instead of animating height directly
+**DO**: Keep hover animations subtle and intentional—a slight opacity shift, a gentle color change, a quiet shadow lift. The best hover states feel discovered, not performed.
 **DON'T**: Animate layout properties (width, height, padding, margin)—use transform and opacity only
 **DON'T**: Use bounce or elastic easing—they feel dated and tacky; real objects decelerate smoothly
+**DON'T**: Use zoom-on-hover for images (scale transform on hover)—it's the #1 vibe-coded tell. It looks cheap, feels unintentional, and screams "AI template." If an image needs interaction, use a subtle overlay or caption reveal instead.
+**DON'T**: Use dramatic hover animations (large scale changes, color inversions, sliding underlines that span full width, 3D tilts)—they distract from content and feel performative rather than purposeful
 
 ### Interaction
 > *Consult [interaction reference](reference/interaction-design.md) for forms, focus, and loading patterns.*
@@ -124,7 +127,7 @@ Make interactions feel fast. Use optimistic UI—update immediately, sync later.
 
 A distinctive interface should make someone ask "how was this made?" not "which AI made this?"
 
-Review the DON'T guidelines above—they are the fingerprints of AI-generated work from 2024-2025.
+Common AI tells: Inter/Roboto fonts, purple gradients, glassmorphism, nested cards, hero metrics layout, gradient text, bounce easing, **zoom-on-hover images**, dramatic hover animations, dark mode with neon accents. These are the fingerprints of AI-generated work from 2024-2025.
 
 ---
 
