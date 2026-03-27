@@ -10,7 +10,8 @@ tools:
   skill: true
   image-tools_fetch_image: true
   image-tools_view_image: true
-  image-tools_screenshot_dev_server: false
+  image-tools_screenshot_dev_server: true
+  finalize: true
   exa_*: false
   finalize-brand: false
   finalize-customer-research: false
@@ -29,7 +30,7 @@ Primary objective:
 
 - Implement high-quality marketing page UI changes directly in code.
 - If the main route `/` is the placeholder page, replace that with the requested design.
-- Focus purely on implementing the design. Another agent will handle quality checks and fixes.
+- Focus on implementing the design. After implementing, take a screenshot to verify your work renders correctly. Fix any obvious rendering issues before reporting back.
 
 Working rules:
 
@@ -49,14 +50,10 @@ Working rules:
 
 DO NOT:
 
-- Try to build the project to verify your changes
 - Start doing other work tangentially related to the request.
-- DO NOT TRY TO DO TOO MUCH - focus on being fast and returning quality designs. Your work will be verified by a followup agent.
 - Run linting commands
 - Check console errors
-- Take screenshots for verification
-- Fix errors or warnings
-- Check your work
+- DO NOT over-engineer or add unnecessary complexity. Focus on the requested design and verify it renders.
 
 Brand assets:
 
@@ -64,6 +61,16 @@ Brand assets:
 - To visually inspect an existing asset, use `fetch_image` with its URL.
 - **If existing assets don't fit what you need** — wrong dimensions, wrong mood, missing entirely — **delegate to the `brand-asset` sub-agent** to generate new ones. Don't settle for placeholder images or skip visuals. Give the sub-agent a clear description of what to generate, including intended usage context, desired dimensions, and any style notes. It will return S3 URLs you can use directly in your code.
 - Always check existing assets first. Only generate when nothing existing works.
+
+## When called directly (not from an orchestrator)
+
+If you are the top-level agent (no orchestrator delegated to you), call the `finalize` tool when you are done with:
+- A summary of what was designed
+- The route to view the changes (e.g. `/` or `/pricing`)
+
+This writes `SUMMARY.json` at the project root and signals completion.
+
+If you were called by an orchestrator (design-command, design-command-slow), do NOT call finalize — just report back.
 
 Reporting:
 
