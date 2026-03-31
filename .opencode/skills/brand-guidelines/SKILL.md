@@ -1,6 +1,7 @@
 ---
 name: brand-guidelines
 description: Loads the company's brand guidelines from company-docs/brand-guidelines.md and applies them to any visual artifact. Use when brand colors, typography, design language, or company style guidelines are needed.
+user-invocable: false
 ---
 
 # Brand Guidelines

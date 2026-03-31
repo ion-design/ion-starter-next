@@ -1,6 +1,7 @@
 ---
 name: company-research
 description: Company research using Exa search. Finds company info, competitors, news, tweets, financials, LinkedIn profiles, builds company lists. Use when researching companies, doing competitor analysis, market research, or building company lists.
+user-invocable: false
 context: fork
 ---
 
